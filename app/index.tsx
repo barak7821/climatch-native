@@ -6,13 +6,12 @@ import { useWeather } from '../utils/WeatherContext'
 import { errorLog } from '../lib/logger'
 import type { WeatherData } from '../lib/types'
 import Loading from './loading'
-import { useRouter } from 'expo-router'
+import { router } from 'expo-router'
 import { Keyboard, Pressable, Text, TextInput, View } from 'react-native'
 import { SafeAreaView } from "react-native-safe-area-context"
 import { LinearGradient } from "expo-linear-gradient"
 
 export default function Home() {
-    const router = useRouter()
     const notifier = useNotifier()
     const [enabledLocationInput, setEnabledLocationInput] = useState(false)
     const [city, setCity] = useState("")
@@ -130,21 +129,20 @@ export default function Home() {
                     {/* Title */}
                     <Text className="mb-2 text-white/90 text-xl font-medium">Choose your style (optional)</Text>
                     <View className="w-full max-w-sm mb-8 mx-auto flex flex-row flex-wrap justify-center gap-2">
-                        <Pressable disabled={isLoading} accessibilityLabel="Casual style" className={`w-[30%] min-w-[90px] items-center justify-center py-3 rounded-3xl transition ${style === "Casual" ? "bg-yellow-400 ring-2 ring-yellow-600" : "bg-yellow-100 hover:bg-yellow-200"}`} onPress={() => handleStyleChange("Casual")}>
+                        <Pressable disabled={isLoading} accessibilityLabel="Casual style" className={`w-[30%] min-w-[90px] items-center justify-center py-3 rounded-3xl transition ${style === "Casual" ? "bg-yellow-400 " : "bg-yellow-100 hover:bg-yellow-200"}`} onPress={() => handleStyleChange("Casual")}>
                             <Text className={`text-md font-medium ${style === "Casual" ? "text-yellow-900" : "text-yellow-700"}`}>Casual</Text>
                         </Pressable>
-                        <Pressable disabled={isLoading} accessibilityLabel="Sport style" className={`w-[30%] min-w-[90px] items-center justify-center py-3 rounded-3xl transition ${style === "Sport" ? "bg-green-400 ring-2 ring-green-600" : "bg-green-100 hover:bg-green-200"}`}
-                            onPress={() => handleStyleChange("Sport")}>
+                        <Pressable disabled={isLoading} accessibilityLabel="Sport style" className={`w-[30%] min-w-[90px] items-center justify-center py-3 rounded-3xl transition ${style === "Sport" ? "bg-green-400" : "bg-green-100 hover:bg-green-200"}`} onPress={() => handleStyleChange("Sport")}>
                             <Text className={`text-md font-medium ${style === "Sport" ? "text-green-900" : "text-green-700"}`}>Sport</Text>
                         </Pressable>
-                        <Pressable disabled={isLoading} accessibilityLabel="Office style" className={`w-[30%] min-w-[90px] items-center justify-center py-3 rounded-3xl transition ${style === "Office" ? "bg-blue-400 ring-2 ring-blue-600" : "bg-blue-100 hover:bg-blue-200"}`} onPress={() => handleStyleChange("Office")}>
+                        <Pressable disabled={isLoading} accessibilityLabel="Office style" className={`w-[30%] min-w-[90px] items-center justify-center py-3 rounded-3xl transition ${style === "Office" ? "bg-blue-400" : "bg-blue-100 hover:bg-blue-200"}`} onPress={() => handleStyleChange("Office")}>
                             <Text className={`text-md font-medium ${style === "Office" ? "text-blue-900" : "text-blue-700"}`}>Office</Text>
                         </Pressable>
                         <View className="w-full flex-row justify-center gap-2 mt-1">
-                            <Pressable disabled={isLoading} accessibilityLabel="Elegant style" className={`w-[30%] min-w-[90px] items-center justify-center py-3 rounded-3xl transition ${style === "Elegant" ? "bg-pink-400 ring-2 ring-pink-600" : "bg-pink-100 hover:bg-pink-200"}`} onPress={() => handleStyleChange("Elegant")}>
+                            <Pressable disabled={isLoading} accessibilityLabel="Elegant style" className={`w-[30%] min-w-[90px] items-center justify-center py-3 rounded-3xl transition ${style === "Elegant" ? "bg-pink-400" : "bg-pink-100 hover:bg-pink-200"}`} onPress={() => handleStyleChange("Elegant")}>
                                 <Text className={`text-md font-medium ${style === "Elegant" ? "text-pink-900" : "text-pink-700"}`}>Elegant</Text>
                             </Pressable>
-                            <Pressable disabled={isLoading} accessibilityLabel="Streetwear style" className={`w-[30%] min-w-[110px] items-center justify-center py-3 rounded-3xl transition ${style === "Streetwear" ? "bg-gray-400 ring-2 ring-gray-600" : "bg-gray-200 hover:bg-gray-300"}`} onPress={() => handleStyleChange("Streetwear")}>
+                            <Pressable disabled={isLoading} accessibilityLabel="Streetwear style" className={`w-[30%] min-w-[110px] items-center justify-center py-3 rounded-3xl transition ${style === "Streetwear" ? "bg-gray-400" : "bg-gray-200 hover:bg-gray-300"}`} onPress={() => handleStyleChange("Streetwear")}>
                                 <Text className={`text-md font-medium ${style === "Streetwear" ? "text-gray-900" : "text-gray-700"}`}>Streetwear</Text>
                             </Pressable>
                         </View>
